@@ -18,3 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('login', 'UsuarioController@login');
+
+Route::get('projetos', 'ProjetoController@index');
+Route::post('projetos', 'ProjetoController@criar');
+Route::put('projetos/{projeto}', 'ProjetoController@editar');
+Route::delete('projetos/{projeto}', 'ProjetoController@excluir');
+Route::get('projetos/{projeto}', 'ProjetoController@ver');
+
+Route::get('tarefas', 'TarefaController@index');
+Route::post('tarefas', 'TarefaController@criar');
+Route::put('tarefas/{tarefa}', 'TarefaController@editar');
+Route::delete('tarefas/{tarefa}', 'TarefaController@excluir');
+Route::get('tarefas/{tarefa}', 'TarefaController@ver');
