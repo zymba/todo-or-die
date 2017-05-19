@@ -1,41 +1,50 @@
 <template>
   <div id="app">
+    <nav class="nav hero is-default has-shadow" id="top">
+      <div class="container">
+        <div class="nav-left">
+          <a class="nav-item" href="/">
+            Todo Or Die
+          </a>
+          <a href="#/tarefas" class="nav-item"><strong>Tarefas</strong></a>
+          <a class="nav-item"><strong>Projetos</strong></a>
+        </div>
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <div class="nav-right nav-menu">
+          <a class="nav-item is-tab">
+            <i class="fa fa-user"></i>
+            <span class="icon icon-chevron">
+              <i class="fa fa-chevron-down"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </nav>
     
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          First column
-        </div>
-        <div class="column">
-          Second column
-        </div>
-        <div class="column">
-          Third column
-        </div>
-        <div class="column">
-          Fourth column
+    <div class="section">
+      <div class="container">
+        <div class="column is-10">
+          <router-view></router-view>
         </div>
       </div>
     </div>
-
-    <img src="./assets/logo.png">
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  styles: [
+    require('font-awesome/css/font-awesome.min.css'),
+    require('bulma/css/bulma.css')
+  ]
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
