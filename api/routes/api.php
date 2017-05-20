@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'UsuarioController@login');
 
-Route::group(['middleware' => 'jwt.auth'], function () {
+// Route::group(['middleware' => 'jwt.auth'], function () {
 	Route::get('projetos', 'ProjetoController@index');
 	Route::post('projetos', 'ProjetoController@criar');
 	Route::put('projetos/{projeto}', 'ProjetoController@editar');
@@ -31,4 +31,4 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 	Route::put('tarefas/{tarefa}', 'TarefaController@editar');
 	Route::delete('tarefas/{tarefa}', 'TarefaController@excluir');
 	Route::get('tarefas/{tarefa}', 'TarefaController@ver');
-});
+// });
