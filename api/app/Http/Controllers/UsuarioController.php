@@ -24,4 +24,10 @@ class UsuarioController extends Controller
 		// all good so return the token
 		return response()->json(compact('token'));
     }
+
+    public function ver() {
+		$usuario = JWTAuth::parseToken()->toUser();
+
+		return response()->json(compact('usuario'));
+    }
 }

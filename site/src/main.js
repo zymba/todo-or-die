@@ -17,7 +17,7 @@ Vue.config.productionTip = false
 Vue.http.options.root = process.env.SERVER
 
 Vue.http.interceptors.push((request, next) => {
-  request.headers.set('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL2xvZ2luIiwiaWF0IjoxNDk1MjE5NTI5LCJleHAiOjE0OTUyMjMxMjksIm5iZiI6MTQ5NTIxOTUyOSwianRpIjoiZWNMZWNDM3NRMlJmVk1HSiJ9.0JCgEBjY6t1s0STu0R1TprnCsDe1FTFss1IHravm0Ss')
+  request.headers.set('Authorization', 'Bearer ' + window.sessionStorage['token'])
   next()
 })
 
@@ -25,6 +25,13 @@ const store = new Vuex.Store(VuexStore)
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (!store.state.login.auth.check && to.meta.auth) {
+    return router.push({name: 'login'})
+  }
+  next()
 })
 
 /* eslint-disable no-new */

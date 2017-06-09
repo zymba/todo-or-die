@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="nav hero is-default has-shadow" id="top">
+    <nav class="nav hero is-default has-shadow" id="top" v-if="isAuth">
       <div class="container">
         <div class="nav-left">
           <a class="nav-item" href="/">
@@ -15,6 +15,8 @@
           <span></span>
         </span>
         <div class="nav-right nav-menu">
+          <a class="nav-item">{{ user.name }}</a>
+          <router-link :to="{ name: 'logout' }" class="nav-item">Logout</router-link>
           <a class="nav-item is-tab">
             <i class="fa fa-user"></i>
             <span class="icon icon-chevron">
@@ -41,7 +43,15 @@ export default {
   styles: [
     require('font-awesome/css/font-awesome.min.css'),
     require('bulma/css/bulma.css')
-  ]
+  ],
+  computed: {
+    user () {
+      return this.$store.state.login.auth.user ? this.$store.state.login.auth.user : null
+    },
+    isAuth () {
+      return this.$store.state.login.auth.check
+    }
+  }
 }
 </script>
 
